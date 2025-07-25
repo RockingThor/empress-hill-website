@@ -1,5 +1,6 @@
 import React from "react";
 import ImageSlider from "./ImageSlider";
+import Image from "next/image";
 
 const sampleImages = [
   "/assets/Hero_Section_Desktop.png",
@@ -42,6 +43,33 @@ const FourBHK = () => {
           </div>
         </div>
       </div>
+      <div className="bg-[#E9DEDC] w-full h-full hidden  lg:flex flex-col items-center">
+        <Image
+          src="/assets/clouds_left.png"
+          alt="clouds"
+          width={200}
+          height={200}
+          className="absolute left-0 opacity-15 mt-70"
+        />
+        <div className="flex flex-row items-center justify-center gap-5 w-full">
+          <Image
+            src="/assets/floor_plan_4bhk_left.png"
+            alt="4BHK floor plan"
+            width={600}
+            height={600}
+          />
+          <Image
+            src="/assets/floor_plan_4bhk_right.png"
+            alt="4BHK floor plan"
+            width={600}
+            height={600}
+          />
+        </div>
+        <div className="flex flex-row items-center justify-between gap-100 text-sm text-[#725054] font-poppins ">
+          <p>TOP VIEW OF ATTIC FLOOR </p>
+          <p>TOP VIEW OF GROUND FLOOR </p>
+        </div>
+      </div>
 
       {/* Mobile View */}
       <div className="bg-[#E9DEDC] w-full h-full pb-10 md:hidden flex-row gap-5  ">
@@ -75,8 +103,8 @@ const FourBHK = () => {
         </div>
         <div className="bg-[#E9DEDC] w-full h-full flex flex-col items-center mt-5">
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
-          <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center ">
-            Unit{" "}
+          <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
+            Unit
             <h1 className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
               Plan
             </h1>
