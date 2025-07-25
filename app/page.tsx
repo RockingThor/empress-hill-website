@@ -4,6 +4,7 @@ import Overview from "@/components/Overview";
 import Configuration from "@/components/Configuration";
 import ImageSliderDemo from "@/components/ImageSliderDemo";
 import FourBHK from "@/components/FourBHK";
+import ThreeBHK from "@/components/ThreeBHK";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Overview />
       <Configuration />
       <FourBHK />
+      <ThreeBHK />
     </div>
   );
 }

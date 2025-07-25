@@ -49,7 +49,7 @@ const FourBHK = () => {
           alt="clouds"
           width={200}
           height={200}
-          className="absolute left-0 opacity-15 mt-70"
+          className="absolute left-0 opacity-15 mt-60"
         />
         <div className="flex flex-row items-center justify-center gap-5 w-full">
           <Image
