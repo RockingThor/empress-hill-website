@@ -12,7 +12,7 @@ const sampleImages = [
 const ThreeBHK = () => {
   return (
     <>
-      <div className="bg-[#E9DEDC] w-full h-full pb-10 hidden  lg:flex flex-row gap-5 pt-20 ">
+      <div className="bg-gradient-to-b from-[#FBEFEB] to-[#FDF6F3] w-full h-full pb-10 hidden  lg:flex flex-row gap-5 pt-20 ">
         <div className="bg-[#BD314C] h-1 w-[7vw] absolute mt-17 left-0"></div>
         <div className="flex flex-col  text-center gap-5 w-[30vw] p-5">
           <div className="flex flex-col items-center justify-center text-center gap-5">
@@ -43,7 +43,7 @@ const ThreeBHK = () => {
           />
         </div>
       </div>
-      <div className="bg-[#E9DEDC] w-full h-full hidden  lg:flex flex-col items-center pb-20">
+      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full h-full hidden  lg:flex flex-col items-center pb-20">
         <div className="flex flex-row items-center justify-center gap-5 w-full">
           <div className="flex flex-col items-center justify-center gap-3 w-[40vw]">
             <Image
@@ -71,7 +71,7 @@ const ThreeBHK = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-[#E9DEDC] w-full h-full  md:hidden flex-row gap-5  ">
+      <div className="bg-gradient-to-b from-[#FBEFEB] to-[#FDF6F3] w-full h-full  md:hidden flex-row gap-5  ">
         <div className="flex flex-col items-center justify-center text-center gap-5">
           <div className="flex flex-col items-center justify-center text-center">
             <div className="bg-[#BD314C] h-1 w-[30vw] absolute mt-0 left-0"></div>
@@ -100,7 +100,7 @@ const ThreeBHK = () => {
             Ideal for those who seek comfort without compromise.
           </p>
         </div>
-        <div className="bg-[#E9DEDC] w-full h-full flex flex-col items-center mt-5">
+        <div className="bg-gradient-to-b from-[#FBEFEB] to-[#FDF6F3] w-full h-full flex flex-col items-center mt-5">
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit

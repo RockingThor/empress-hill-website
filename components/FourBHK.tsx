@@ -15,7 +15,7 @@ const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
 const FourBHK = () => {
   return (
     <>
-      <div className="bg-[#E9DEDC] w-full h-full pb-10 hidden  lg:flex flex-row gap-5  ">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  lg:flex flex-row gap-5  ">
         <div className="w-[70vw] h-96">
           <ImageSlider
             images={sampleImages}
@@ -46,7 +46,7 @@ const FourBHK = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#E9DEDC] w-full h-full hidden  lg:flex flex-col items-center">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  lg:flex flex-col items-center">
         <Image
           src="/assets/clouds_left.png"
           alt="clouds"
@@ -75,7 +75,7 @@ const FourBHK = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-[#E9DEDC] w-full h-full pb-10 md:hidden flex-row gap-5  ">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 md:hidden flex-row gap-5  ">
         <div className="flex flex-col items-center justify-center text-center gap-5">
           <div className="flex flex-col items-center justify-center text-center">
             <div className="bg-[#BD314C] h-1 w-[30vw] absolute mt-0 left-0"></div>
@@ -104,7 +104,7 @@ const FourBHK = () => {
             convenience of apartment living; perfect for those who desire more.
           </p>
         </div>
-        <div className="bg-[#E9DEDC] w-full h-full flex flex-col items-center mt-5 mb-2">
+        <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full flex flex-col items-center mt-5 mb-2">
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit

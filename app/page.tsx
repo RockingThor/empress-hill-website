@@ -8,6 +8,7 @@ import ThreeBHK from "@/components/ThreeBHK";
 import ContactUs from "@/components/ContactForm";
 import OnlyImage from "@/components/OnlyImage";
 import Amenities from "@/components/Amenities";
+import SitePlan from "@/components/SitePlan";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <ThreeBHK />
       <OnlyImage />
       <Amenities />
+      <SitePlan />
       <ContactUs />
     </div>
   );

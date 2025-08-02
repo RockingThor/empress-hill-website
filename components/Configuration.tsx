@@ -11,7 +11,7 @@ const Configuration = () => {
 
   return (
     <>
-      <div className="bg-[#E9DEDC] w-full h-full pb-10 hidden  lg:block ">
+      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden  lg:block ">
         <Image
           src="/assets/clouds_right.png"
           alt="clouds"
@@ -89,7 +89,7 @@ const Configuration = () => {
           </button>
         </div>
       </div>
-      <div className="bg-[#E9DEDC] w-full h-full pb-10  md:hidden ">
+      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10  md:hidden ">
         <Image
           src="/assets/clouds_right.png"
           alt="clouds"
