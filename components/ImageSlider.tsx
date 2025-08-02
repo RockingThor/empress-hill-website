@@ -102,7 +102,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           {/* Left Arrow */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
             aria-label="Previous image"
           >
             <ArrowLeft className="w-6 h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
@@ -111,7 +111,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           {/* Right Arrow */}
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
             aria-label="Next image"
           >
             <ArrowRight className="w-6 h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
@@ -120,7 +120,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       )}
 
       {/* Dots Indicator */}
-      {showDots && images.length > 1 && (
+      {/* {showDots && images.length > 1 && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex space-x-2">
           {images.map((_, index) => (
             <button
@@ -135,17 +135,17 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             />
           ))}
         </div>
-      )}
+      )} */}
 
       {/* Slide Counter */}
-      {images.length > 1 && (
+      {/* {images.length > 1 && (
         <div className="absolute top-4 right-4 z-10 bg-black/30 text-white px-3 py-1 rounded-full text-sm">
           {currentIndex + 1} / {images.length}
         </div>
-      )}
+      )} */}
 
       {/* Pause/Play Indicator */}
-      {images.length > 1 && (
+      {/* {images.length > 1 && (
         <div className="absolute top-4 left-4 z-10">
           <div
             className={`w-3 h-3 rounded-full ${
@@ -153,7 +153,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             }`}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

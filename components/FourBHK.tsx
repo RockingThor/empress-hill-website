@@ -3,11 +3,14 @@ import ImageSlider from "./ImageSlider";
 import Image from "next/image";
 
 const sampleImages = [
-  "/assets/Hero_Section_Desktop.png",
-  "/assets/clouds_left.png",
-  "/assets/clouds_right.png",
-  // Add more images as needed
+  "/4bhk/1.jpg",
+  "/4bhk/2.jpg",
+  "/4bhk/3.jpg",
+  "/4bhk/4.jpg",
+  "/4bhk/5.jpg",
 ];
+
+const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
 
 const FourBHK = () => {
   return (
@@ -53,13 +56,13 @@ const FourBHK = () => {
         />
         <div className="flex flex-row items-center justify-center gap-5 w-full">
           <Image
-            src="/assets/floor_plan_4bhk_left.png"
+            src="/4bhk/unit_1.png"
             alt="4BHK floor plan"
             width={600}
             height={600}
           />
           <Image
-            src="/assets/floor_plan_4bhk_right.png"
+            src="/4bhk/unit_2.png"
             alt="4BHK floor plan"
             width={600}
             height={600}
@@ -101,7 +104,7 @@ const FourBHK = () => {
             convenience of apartment living; perfect for those who desire more.
           </p>
         </div>
-        <div className="bg-[#E9DEDC] w-full h-full flex flex-col items-center mt-5">
+        <div className="bg-[#E9DEDC] w-full h-full flex flex-col items-center mt-5 mb-2">
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit
@@ -111,7 +114,7 @@ const FourBHK = () => {
           </h1>
           <div className="w-full h-80 mt-3">
             <ImageSlider
-              images={sampleImages}
+              images={unitPlan}
               autoPlayInterval={5000}
               showArrows={true}
               showDots={true}

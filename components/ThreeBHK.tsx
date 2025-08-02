@@ -3,10 +3,10 @@ import ImageSlider from "./ImageSlider";
 import Image from "next/image";
 
 const sampleImages = [
-  "/assets/Hero_Section_Desktop.png",
-  "/assets/clouds_left.png",
-  "/assets/clouds_right.png",
-  // Add more images as needed
+  "/3bhk/1.jpg",
+  "/3bhk/2.jpg",
+  "/3bhk/3.jpg",
+  "/3bhk/4.jpg",
 ];
 
 const ThreeBHK = () => {
@@ -43,11 +43,11 @@ const ThreeBHK = () => {
           />
         </div>
       </div>
-      <div className="bg-[#E9DEDC] w-full h-full hidden  lg:flex flex-col items-center">
+      <div className="bg-[#E9DEDC] w-full h-full hidden  lg:flex flex-col items-center pb-20">
         <div className="flex flex-row items-center justify-center gap-5 w-full">
           <div className="flex flex-col items-center justify-center gap-3 w-[40vw]">
             <Image
-              src="/assets/floor_plan_4bhk_left.png"
+              src="/3bhk/unit_1.png"
               alt="4BHK floor plan"
               width={600}
               height={600}
@@ -71,7 +71,7 @@ const ThreeBHK = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-[#E9DEDC] w-full h-full pb-10 md:hidden flex-row gap-5  ">
+      <div className="bg-[#E9DEDC] w-full h-full  md:hidden flex-row gap-5  ">
         <div className="flex flex-col items-center justify-center text-center gap-5">
           <div className="flex flex-col items-center justify-center text-center">
             <div className="bg-[#BD314C] h-1 w-[30vw] absolute mt-0 left-0"></div>
@@ -110,7 +110,7 @@ const ThreeBHK = () => {
           </h1>
           <div className="w-full h-80 mt-3">
             <Image
-              src="/assets/floor_plan_4bhk_left.png"
+              src="/3bhk/unit_1.png"
               alt="3BHK floor plan"
               width={600}
               height={600}
