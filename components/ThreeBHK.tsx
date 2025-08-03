@@ -104,9 +104,9 @@ const ThreeBHK = () => {
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit
-            <h1 className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
+            <span className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
               Plan
-            </h1>
+            </span>
           </h1>
           <div className="w-full h-80 mt-3">
             <Image

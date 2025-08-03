@@ -24,7 +24,7 @@ const FourBHK = () => {
             showDots={true}
           />
         </div>
-        <div className="bg-[#BD314C] h-1 w-[7vw] absolute mt-10 right-0"></div>
+        <div className="bg-[#BD314C] h-1 w-[7vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col  text-center gap-5 w-[30vw] p-5">
           <div className="flex flex-col items-center justify-center text-center gap-5">
             <div className="flex flex-col items-center justify-center text-center">
@@ -108,9 +108,9 @@ const FourBHK = () => {
           <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit
-            <h1 className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
+            <span className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
               Plan
-            </h1>
+            </span>
           </h1>
           <div className="w-full h-80 mt-3">
             <ImageSlider
