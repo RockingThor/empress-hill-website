@@ -38,7 +38,7 @@ const amenities = [
 
 const Amenities = () => {
   return (
-    <>
+    <div id="amenities">
       <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full h-full pt-5 hidden lg:block ">
         <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-16"></div>
         <div className="flex flex-col items-center justify-center h-full">
@@ -132,7 +132,7 @@ const Amenities = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const Configuration = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <>
+    <div id="configuration">
       <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden lg:block">
         <Image
           src="/assets/clouds_right.png"
@@ -188,7 +188,7 @@ const Configuration = () => {
 
       {/* Contact Us Modal */}
       <ContactUsModal isOpen={isModalOpen} onClose={closeModal} />
-    </>
+    </div>
   );
 };
 

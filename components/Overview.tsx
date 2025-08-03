@@ -3,8 +3,8 @@ import React from "react";
 
 const Overview = () => {
   return (
-    <>
-      <div className="bg-gradient-to-b from-[#E9DEDC] to-[#F2E8E5] w-full h-full pb-10 hidden lg:block ">
+    <div id="overview">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#F2E8E5] w-full h-full pb-10 hidden lg:block">
         <Image
           src="/assets/clouds_right.png"
           alt="clouds"
@@ -68,7 +68,7 @@ const Overview = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -14,7 +14,7 @@ const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
 
 const FourBHK = () => {
   return (
-    <>
+    <div id="four-bhk-duplexes">
       <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  lg:flex flex-row gap-5  ">
         <div className="w-[70vw] h-96">
           <ImageSlider
@@ -122,7 +122,7 @@ const FourBHK = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

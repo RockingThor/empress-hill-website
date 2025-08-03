@@ -11,7 +11,7 @@ const sampleImages = [
 
 const ThreeBHK = () => {
   return (
-    <>
+    <div id="three-bhk-apartments">
       <div className="bg-gradient-to-b from-[#FBEFEB] to-[#FDF6F3] w-full h-full pb-10 hidden  lg:flex flex-row gap-5 pt-20 ">
         <div className="bg-[#BD314C] h-1 w-[7vw] absolute mt-17 left-0"></div>
         <div className="flex flex-col  text-center gap-5 w-[30vw] p-5">
@@ -121,7 +121,7 @@ const ThreeBHK = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

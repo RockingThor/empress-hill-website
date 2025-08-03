@@ -4,7 +4,7 @@ import Faq from "./Faq";
 
 const Connectivity = () => {
   return (
-    <>
+    <div id="connectivity">
       {/* Desktop View */}
       <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-16 hidden lg:block">
         {/* Red line above title */}
@@ -56,7 +56,7 @@ const Connectivity = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

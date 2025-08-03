@@ -3,7 +3,7 @@ import React from "react";
 
 const SitePlan = () => {
   return (
-    <>
+    <div id="site-plan">
       <div className="bg-gradient-to-b from-white to-[#E9DEDC] w-full h-full pb-10 hidden lg:block ">
         <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
@@ -34,7 +34,7 @@ const SitePlan = () => {
           className="w-full h-full object-cover"
         />
       </div>
-    </>
+    </div>
   );
 };
 
