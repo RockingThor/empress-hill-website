@@ -18,7 +18,7 @@ interface Field {
   icon: React.ReactNode;
 }
 
-const ContactUs = React.memo(() => {
+const ContactForm = React.memo(() => {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     phone: "",
@@ -68,10 +68,10 @@ const ContactUs = React.memo(() => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#735054] via-[#735054] to-[#8e6e71] flex items-center justify-center p-4 text-[rgba(0,0,0,1)]">
-      <div className="w-full max-w-md">
+    <div className="flex items-center justify-center p-2 md:p-4 text-[rgba(0,0,0,1)]">
+      <div className="w-full max-w-sm md:max-w-md">
         {/* Header */}
-        <div className="text-center mb-8">
+        {/* <div className="text-center mb-8">
           <h1 className="text-4xl font-semibold text-white mb-4 tracking-wider">
             CONTACT US
           </h1>
@@ -80,7 +80,7 @@ const ContactUs = React.memo(() => {
             <br />
             in touch with us!
           </p>
-        </div>
+        </div> */}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -173,6 +173,6 @@ const ContactUs = React.memo(() => {
     </div>
   );
 });
-ContactUs.displayName = "ContactUs";
+ContactForm.displayName = "ContactForm";
 
-export default ContactUs;
+export default ContactForm;

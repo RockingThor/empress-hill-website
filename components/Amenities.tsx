@@ -71,7 +71,7 @@ const Amenities = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full h-full pb-10 md:hidden">
+      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full h-full  md:hidden">
         <div className="bg-[#BD314C] h-1 w-[20vw] absolute mt-15.5"></div>
         <div className="flex flex-col items-center justify-center h-full">
           <h1 className="text-5xl  text-[#725054] font-gentium-plus mb-5 mt-10">

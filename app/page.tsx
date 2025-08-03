@@ -2,13 +2,13 @@ import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
 import Overview from "@/components/Overview";
 import Configuration from "@/components/Configuration";
-import ImageSliderDemo from "@/components/ImageSliderDemo";
 import FourBHK from "@/components/FourBHK";
 import ThreeBHK from "@/components/ThreeBHK";
-import ContactUs from "@/components/ContactForm";
 import OnlyImage from "@/components/OnlyImage";
 import Amenities from "@/components/Amenities";
 import SitePlan from "@/components/SitePlan";
+import Connectivity from "@/components/Connectivity";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -22,7 +22,8 @@ export default function Home() {
       <OnlyImage />
       <Amenities />
       <SitePlan />
-      <ContactUs />
+      <Connectivity />
+      <Footer />
     </div>
   );
 }

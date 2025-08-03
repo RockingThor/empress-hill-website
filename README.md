@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Google Maps Setup
+
+To use the Map component, you need to set up a Google Maps API key:
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+2. Create a new project or select an existing one
+3. Enable the Maps JavaScript API
+4. Create credentials (API key)
+5. Create a `.env.local` file in the root directory and add:
+   ```
+   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+   ```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
