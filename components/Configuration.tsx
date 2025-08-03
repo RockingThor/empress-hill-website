@@ -11,7 +11,7 @@ const Configuration = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden  lg:block ">
+      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden lg:block">
         <Image
           src="/assets/clouds_right.png"
           alt="clouds"
@@ -22,64 +22,72 @@ const Configuration = () => {
 
         <div className="bg-[#BD314C] h-1 w-[35vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-5xl  text-[#725054] font-gentium-plus mb-10 mt-10">
+          <h1 className="text-5xl text-[#725054] font-gentium-plus mb-10 mt-10">
             Configuration
           </h1>
-          <div className="flex flex-row items-center justify-center gap-15 text-lg text-[#725054] font-poppins">
-            <div className="font-bold">UNIT</div>
-            <div className="flex flex-col items-center justify-center ">
+
+          {/* Desktop Table Header */}
+          <div className="grid grid-cols-4 gap-8 w-full max-w-4xl px-8 text-lg text-[#725054] font-poppins">
+            <div className="text-center my-auto">
+              <div className="font-bold">UNIT</div>
+            </div>
+            <div className="text-center">
               <div className="font-bold">SBA</div>
-              <div>Super build up area</div>
+              <div className="text-sm">Super build up area</div>
             </div>
-            <div className="flex flex-col items-center justify-center ">
+            <div className="text-center">
               <div className="font-bold">BA</div>
-              <div>Build up area</div>
+              <div className="text-sm">Build up area</div>
             </div>
-            <div className="flex flex-col items-center justify-center ">
+            <div className="text-center">
               <div className="font-bold">CA</div>
-              <div>Carpet area</div>
+              <div className="text-sm">Carpet area</div>
             </div>
           </div>
         </div>
-        <div className="h-0.5 w-[45vw] bg-[#6C5628] mx-auto mt-4"></div>
+
+        <div className="h-0.5 w-[60vw] bg-[#6C5628] mx-auto mt-4"></div>
+
+        {/* Desktop Table Data */}
         <div className="flex flex-col items-center justify-center gap-5 mt-5">
-          <div className="flex flex-row items-center justify-center gap-15 text-lg text-[#725054] font-poppins">
-            <div className="flex flex-col items-center justify-center">
+          <div className="grid grid-cols-4 gap-8 w-full max-w-4xl px-8 text-lg text-[#725054] font-poppins">
+            <div className="text-center">
               <div>3 BHK</div>
               <div>Apartments</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>260 m2</div>
+            <div className="text-center">
+              <div>260 m²</div>
               <div>2797.6 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>180 m2</div>
+            <div className="text-center">
+              <div>180 m²</div>
               <div>1936.8 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>166 m2</div>
+            <div className="text-center">
+              <div>166 m²</div>
               <div>1786.16 sq ft</div>
             </div>
           </div>
-          <div className="flex flex-row items-center justify-center gap-15 text-lg text-[#725054] font-poppins">
-            <div className="flex flex-col items-center justify-center">
+          <div className="grid grid-cols-4 gap-8 w-full max-w-4xl px-8 text-lg text-[#725054] font-poppins">
+            <div className="text-center">
               <div>4 BHK</div>
               <div>Duplexes</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>366 m2</div>
+            <div className="text-center">
+              <div>366 m²</div>
               <div>3938.16 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>277 m2</div>
+            <div className="text-center">
+              <div>277 m²</div>
               <div>2980.5 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>253 m2</div>
+            <div className="text-center">
+              <div>253 m²</div>
               <div>2722.28 sq ft</div>
             </div>
           </div>
         </div>
+
         <div className="flex flex-col items-center justify-center gap-5 mt-15">
           <button
             onClick={openModal}
@@ -89,7 +97,9 @@ const Configuration = () => {
           </button>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10  md:hidden ">
+
+      {/* Mobile Version */}
+      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 md:hidden">
         <Image
           src="/assets/clouds_right.png"
           alt="clouds"
@@ -100,64 +110,72 @@ const Configuration = () => {
 
         <div className="bg-[#BD314C] h-1 w-[18vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-4xl  text-[#725054] font-gentium-plus mb-10 mt-10">
+          <h1 className="text-4xl text-[#725054] font-gentium-plus mb-10 mt-10">
             Configuration
           </h1>
-          <div className="flex flex-row items-center justify-center gap-5 text-sm text-[#725054] font-poppins p-2">
-            <div className="font-bold">UNIT</div>
-            <div className="flex flex-col items-center justify-center ">
-              <div className="font-bold text-sm">SBA</div>
-              <div className="text-xs text-center">Super build up area</div>
+
+          {/* Mobile Table Header */}
+          <div className="grid grid-cols-4 gap-2 w-full px-4 text-sm text-[#725054] font-poppins">
+            <div className="text-center">
+              <div className="font-bold text-xs">UNIT</div>
             </div>
-            <div className="flex flex-col items-center justify-center ">
-              <div className="font-bold text-sm">BA</div>
-              <div className="text-xs text-center">Build up area</div>
+            <div className="text-center">
+              <div className="font-bold text-xs">SBA</div>
+              <div className="text-xs">Super build up area</div>
             </div>
-            <div className="flex flex-col items-center justify-center ">
-              <div className="font-bold text-sm">CA</div>
-              <div className="text-xs text-center">Carpet area</div>
+            <div className="text-center">
+              <div className="font-bold text-xs">BA</div>
+              <div className="text-xs">Build up area</div>
+            </div>
+            <div className="text-center">
+              <div className="font-bold text-xs">CA</div>
+              <div className="text-xs">Carpet area</div>
             </div>
           </div>
         </div>
+
         <div className="h-[1px] w-[90vw] bg-[#6C5628] mx-auto mt-2"></div>
-        <div className="flex flex-col items-center justify-center gap-5 mt-5 p-2">
-          <div className="flex flex-row items-center justify-center gap-4 text-xs text-[#725054] font-poppins">
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">3 BHK</div>
-              <div className="text-xs">Apartments</div>
+
+        {/* Mobile Table Data */}
+        <div className="flex flex-col items-center justify-center gap-5 mt-5">
+          <div className="grid grid-cols-4 gap-2 w-full px-4 text-xs text-[#725054] font-poppins">
+            <div className="text-center">
+              <div>3 BHK</div>
+              <div>Apartments</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">260 m2</div>
-              <div className="text-xs">2797.6 sq ft</div>
+            <div className="text-center">
+              <div>260 m²</div>
+              <div>2797.6 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">180 m2</div>
-              <div className="text-xs">1936.8 sq ft</div>
+            <div className="text-center">
+              <div>180 m²</div>
+              <div>1936.8 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">166 m2</div>
-              <div className="text-xs">1786.16 sq ft</div>
+            <div className="text-center">
+              <div>166 m²</div>
+              <div>1786.16 sq ft</div>
             </div>
           </div>
-          <div className="flex flex-row items-center justify-center gap-4 text-xs text-[#725054] font-poppins">
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">4 BHK</div>
-              <div className="text-xs">Duplexes</div>
+          <div className="grid grid-cols-4 gap-2 w-full px-4 text-xs text-[#725054] font-poppins">
+            <div className="text-center">
+              <div>4 BHK</div>
+              <div>Duplexes</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">366 m2</div>
-              <div className="text-xs">3938.16 sq ft</div>
+            <div className="text-center">
+              <div>366 m²</div>
+              <div>3938.16 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">277 m2</div>
-              <div className="text-xs">2980.5 sq ft</div>
+            <div className="text-center">
+              <div>277 m²</div>
+              <div>2980.5 sq ft</div>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-xs">253 m2</div>
-              <div className="text-xs">2722.28 sq ft</div>
+            <div className="text-center">
+              <div>253 m²</div>
+              <div>2722.28 sq ft</div>
             </div>
           </div>
         </div>
+
         <div className="flex flex-col items-center justify-center gap-5 mt-15">
           <button
             onClick={openModal}
