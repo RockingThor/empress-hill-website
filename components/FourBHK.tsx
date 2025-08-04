@@ -15,8 +15,8 @@ const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
 const FourBHK = () => {
   return (
     <div id="four-bhk-duplexes">
-      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  lg:flex flex-row gap-5  ">
-        <div className="w-[70vw] h-96">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  lg:flex flex-col gap-5  ">
+        <div className="w-full h-[100vh]">
           <ImageSlider
             images={sampleImages}
             autoPlayInterval={5000}
@@ -24,10 +24,10 @@ const FourBHK = () => {
             showDots={true}
           />
         </div>
-        <div className="bg-[#BD314C] h-1 w-[7vw] absolute mt-16 right-0"></div>
-        <div className="flex flex-col  text-center gap-5 w-[30vw] p-5">
+        <div className="flex flex-col text-center gap-5 w-[30vw] p-5 items-center  mx-auto">
+          <div className="bg-[#BD314C] h-1 w-[35vw] absolute left-0 mt-6"></div>
           <div className="flex flex-col items-center justify-center text-center gap-5">
-            <div className="flex flex-col items-center justify-center text-center">
+            <div className="flex flex-row items-center justify-center text-center gap-5">
               <h1 className="text-5xl  text-[#725054] font-gentium-plus">
                 4 BHK
               </h1>
@@ -35,18 +35,18 @@ const FourBHK = () => {
                 Duplexes
               </h1>
             </div>
-            <p className="text-sm text-[#725054] font-poppins">
+            <p className="text-lg text-[#725054] font-poppins">
               Our 4 BHK duplexes redefine luxury with expansive layouts spread
               across two levels.
             </p>
-            <p className="text-sm text-[#725054] font-poppins">
+            <p className="text-lg text-[#725054] font-poppins">
               These homes bring villa-like privacy with the convenience of
               apartment living; perfect for those who desire more.
             </p>
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  lg:flex flex-col items-center">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  lg:flex flex-col items-center pb-15">
         <Image
           src="/assets/clouds_left.png"
           alt="clouds"

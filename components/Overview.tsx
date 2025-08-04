@@ -6,7 +6,7 @@ const Overview = () => {
     <div id="overview">
       <div className="bg-gradient-to-b from-[#F8F0ED] to-[#F2E8E5] w-full h-full pb-10 hidden lg:block">
         <Image
-          src="/assets/clouds_right.png"
+          src="/assets/clud_new.png"
           alt="clouds"
           width={300}
           height={300}
