@@ -4,7 +4,7 @@ import React from "react";
 const SitePlan = () => {
   return (
     <div id="site-plan">
-      <div className="bg-gradient-to-b from-white to-[#E9DEDC] w-full h-full pb-10 hidden lg:block ">
+      <div className="bg-gradient-to-b from-white to-[#E9DEDC] w-full h-full pb-10 hidden md:block ">
         <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
           <h1 className="text-5xl  text-[#725054] font-gentium-plus mb-10 mt-10">

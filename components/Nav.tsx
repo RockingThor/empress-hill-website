@@ -43,7 +43,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="hidden lg:flex justify-between items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 sticky top-0 z-50">
+      <nav className="hidden md:flex justify-between items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 sticky top-0 z-50">
         <Image
           src="/logos/Layer_1.svg"
           alt="logo"
@@ -71,7 +71,7 @@ const Nav = () => {
           </button>
         </div>
       </nav>
-      <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 lg:hidden sticky top-0 z-100">
+      <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 md:hidden sticky top-0 z-100">
         <Image
           src="/logos/Layer_1.svg"
           alt="logo"

@@ -22,7 +22,7 @@ const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
 const FourBHK = () => {
   return (
     <div id="four-bhk-duplexes">
-      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  lg:flex flex-col gap-5  ">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 hidden  md:flex flex-col gap-5  ">
         <div className="w-full h-[100vh]">
           <ImageSlider
             images={sampleImages}
@@ -53,7 +53,7 @@ const FourBHK = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  lg:flex flex-col items-center pb-15">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  md:flex flex-col items-center pb-15">
         {/* <Image
           src="/assets/clouds_left.png"
           alt="clouds"

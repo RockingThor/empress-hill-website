@@ -6,7 +6,7 @@ const Connectivity = () => {
   return (
     <div id="connectivity">
       {/* Desktop View */}
-      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-16 hidden lg:block">
+      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-16 hidden md:block">
         {/* Red line above title */}
         <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-7 left-0"></div>
 
@@ -32,7 +32,7 @@ const Connectivity = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-8 lg:hidden">
+      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-8 md:hidden">
         {/* Red line above title */}
         <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-5 left-0"></div>
 

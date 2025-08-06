@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const OnlyImage = () => {
   return (
-    <div className="w-full h-full hidden lg:block ">
+    <div className="w-full h-full hidden md:block ">
       <Image
         src="/Rectangle.png"
         alt="3bhk"

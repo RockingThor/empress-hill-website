@@ -11,7 +11,7 @@ const Configuration = () => {
 
   return (
     <div id="configuration">
-      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden lg:block">
+      <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden md:block">
         {/* <Image
           src="/assets/clouds_right.png"
           alt="clouds"
