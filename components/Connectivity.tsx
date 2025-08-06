@@ -8,7 +8,7 @@ const Connectivity = () => {
       {/* Desktop View */}
       <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-16 hidden lg:block">
         {/* Red line above title */}
-        <div className="bg-[#BD314C] h-1 w-[40vw] mx-auto mb-8"></div>
+        <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-7 left-0"></div>
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center mb-16">
@@ -34,7 +34,7 @@ const Connectivity = () => {
       {/* Mobile View */}
       <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-8 lg:hidden">
         {/* Red line above title */}
-        <div className="bg-[#BD314C] h-1 w-[60vw] mx-auto mb-6"></div>
+        <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-5 left-0"></div>
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center mb-12">

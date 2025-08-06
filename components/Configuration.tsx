@@ -12,13 +12,13 @@ const Configuration = () => {
   return (
     <div id="configuration">
       <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 hidden lg:block">
-        <Image
+        {/* <Image
           src="/assets/clouds_right.png"
           alt="clouds"
           width={300}
           height={300}
           className="absolute right-0 opacity-15 mt-50"
-        />
+        /> */}
 
         <div className="bg-[#BD314C] h-1 w-[35vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
@@ -100,13 +100,13 @@ const Configuration = () => {
 
       {/* Mobile Version */}
       <div className="bg-gradient-to-b from-[#F2E8E5] to-[#F8F0ED] w-full h-full pb-10 md:hidden">
-        <Image
+        {/* <Image
           src="/assets/clouds_right.png"
           alt="clouds"
           width={300}
           height={300}
           className="absolute right-0 opacity-15 mt-60"
-        />
+        /> */}
 
         <div className="bg-[#BD314C] h-1 w-[18vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">

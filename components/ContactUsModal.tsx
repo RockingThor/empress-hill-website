@@ -6,12 +6,31 @@ interface ContactUsModalProps {
   onClose: () => void;
 }
 
+interface FormData {
+  firstName: string;
+  phone: string;
+  email: string;
+  consent: boolean;
+}
+
+interface SubmissionState {
+  isLoading: boolean;
+  error: string | null;
+  success: boolean;
+}
+
 const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     phone: "",
     email: "",
     consent: false,
+  });
+
+  const [submissionState, setSubmissionState] = useState<SubmissionState>({
+    isLoading: false,
+    error: null,
+    success: false,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,11 +41,85 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const downloadBrochure = () => {
+    const link = document.createElement("a");
+    link.href = "/brochure.pdf";
+    link.download = "Empress-Hill-Brochure.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    onClose();
+
+    setSubmissionState({
+      isLoading: true,
+      error: null,
+      success: false,
+    });
+
+    try {
+      const response = await fetch(
+        "https://empress-hill-tool-backend.vercel.app/api/main-website/submit-form",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.firstName,
+            email: formData.email,
+            phone: formData.phone,
+            type: "brochure",
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      setSubmissionState({
+        isLoading: false,
+        error: null,
+        success: true,
+      });
+
+      // Download the brochure after successful submission
+      setTimeout(() => {
+        downloadBrochure();
+
+        // Close modal after a short delay to show success message
+        setTimeout(() => {
+          onClose();
+          // Reset form and states
+          setFormData({
+            firstName: "",
+            phone: "",
+            email: "",
+            consent: false,
+          });
+          setSubmissionState({
+            isLoading: false,
+            error: null,
+            success: false,
+          });
+        }, 1500);
+      }, 500);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmissionState({
+        isLoading: false,
+        error:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+        success: false,
+      });
+    }
   };
 
   if (!isOpen) return null;
@@ -45,12 +138,29 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="text-center mb-6">
           <h2 className="text-2xl md:text-3xl font-bold text-[#E9DEDC] mb-2">
-            CONTACT US
+            Download Brochure
           </h2>
           <p className="text-[#E9DEDC] text-sm md:text-base">
-            Please enter the details below to get in touch with us!
+            Please enter the details below to download the brochure!
           </p>
         </div>
+
+        {/* Error Message */}
+        {submissionState.error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <p className="text-sm">{submissionState.error}</p>
+          </div>
+        )}
+
+        {/* Success Message */}
+        {submissionState.success && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            <p className="text-sm">
+              Form submitted successfully! Your brochure download will start
+              shortly.
+            </p>
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -75,8 +185,9 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
               value={formData.firstName}
               onChange={handleInputChange}
               placeholder="FIRST NAME"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C]"
+              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
               required
+              disabled={submissionState.isLoading}
             />
           </div>
 
@@ -97,8 +208,9 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
               value={formData.phone}
               onChange={handleInputChange}
               placeholder="PHONE"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C]"
+              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
               required
+              disabled={submissionState.isLoading}
             />
           </div>
 
@@ -120,8 +232,9 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="EMAIL"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C]"
+              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
               required
+              disabled={submissionState.isLoading}
             />
           </div>
 
@@ -132,8 +245,9 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
               name="consent"
               checked={formData.consent}
               onChange={handleInputChange}
-              className="mt-1 w-4 h-4 text-[#BD314C] bg-[#E9DEDC] border-gray-300 rounded focus:ring-[#BD314C] focus:ring-2"
+              className="mt-1 w-4 h-4 text-[#BD314C] bg-[#E9DEDC] border-gray-300 rounded focus:ring-[#BD314C] focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed"
               required
+              disabled={submissionState.isLoading}
             />
             <label className="text-[#E9DEDC] text-[10px]  leading-relaxed">
               By submitting this form you are agreeing to be contacted regarding
@@ -144,16 +258,64 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#8E6C70] hover:bg-[#4A354A] text-[#E9DEDC] font-bold py-3 px-6 rounded-lg shadow-lg transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer"
+            disabled={submissionState.isLoading}
+            className="w-full bg-[#8E6C70] hover:bg-[#4A354A] text-[#E9DEDC] font-bold py-3 px-6 rounded-lg shadow-lg transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#8E6C70]"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span>SUBMIT</span>
+            {submissionState.isLoading ? (
+              <>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                <span>SUBMITTING...</span>
+              </>
+            ) : submissionState.success ? (
+              <>
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>SUCCESS!</span>
+              </>
+            ) : (
+              <>
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>SUBMIT & DOWNLOAD</span>
+              </>
+            )}
           </button>
         </form>
       </div>

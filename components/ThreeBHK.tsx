@@ -44,13 +44,13 @@ const ThreeBHK = () => {
         </div>
       </div>
       <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full hidden  lg:flex flex-col items-center pb-15">
-        <Image
+        {/* <Image
           src="/assets/clouds_left.png"
           alt="clouds"
           width={200}
           height={200}
           className="absolute left-0 opacity-15 mt-60"
-        />
+        /> */}
         <div className="flex flex-row items-center justify-center gap-5 w-full">
           <Image
             src="/3bhk/unit_1.png"
@@ -88,7 +88,7 @@ const ThreeBHK = () => {
         </div>
         <div className="flex flex-col bg-[#725054] w-full h-full items-center justify-center p-5 gap-5 py-12">
           <h2 className="text-2xl text-[#EFE7E5] font-poppins">OVERVIEW</h2>
-          <p className="text-sm text-[#EFE7E5] font-poppins text-center">
+          <p className=" text-[#EFE7E5] font-poppins text-center">
             Gracefully designed for modern families, our 3 BHK residences offer
             a harmonious blend of space, natural light, and everyday elegance.
             Ideal for those who seek comfort without compromise.

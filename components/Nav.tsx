@@ -1,7 +1,8 @@
 "use client";
-import { Menu } from "lucide-react";
+import { DownloadIcon, Menu } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
+import ContactUsModal from "./ContactUsModal";
 
 const navigationItems = [
   { name: "Overview", href: "#overview" },
@@ -15,6 +16,13 @@ const navigationItems = [
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    setIsMenuOpen(false);
+  };
+  const closeModal = () => setIsModalOpen(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -54,6 +62,13 @@ const Nav = () => {
               {item.name}
             </button>
           ))}
+          <button
+            onClick={openModal}
+            className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1"
+          >
+            <DownloadIcon className="w-4 h-4" />
+            Brochure
+          </button>
         </div>
       </nav>
       <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 lg:hidden sticky top-0 z-100">
@@ -94,11 +109,19 @@ const Nav = () => {
                     {item.name}
                   </button>
                 ))}
+                <button
+                  onClick={openModal}
+                  className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1"
+                >
+                  <DownloadIcon className="w-4 h-4" />
+                  Brochure
+                </button>
               </div>
             </div>
           </>
         )}
       </nav>
+      <ContactUsModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };

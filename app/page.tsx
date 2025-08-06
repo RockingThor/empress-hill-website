@@ -9,6 +9,7 @@ import Amenities from "@/components/Amenities";
 import SitePlan from "@/components/SitePlan";
 import Connectivity from "@/components/Connectivity";
 import Footer from "@/components/Footer";
+import MobileFooter from "@/components/MobileFooter";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <SitePlan />
       <Connectivity />
       <Footer />
+      <MobileFooter />
     </div>
   );
 }
