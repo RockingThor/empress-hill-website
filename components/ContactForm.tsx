@@ -176,29 +176,19 @@ const ContactForm = React.memo(() => {
           {fields.map((field) => (
             <div className="relative group" key={field.name}>
               <div
-                className={`flex shadow-xl transition-all duration-300 ${
+                className={`flex shadow-xl transition-all duration-300 rounded-lg overflow-hidden ${
                   focusedField === field.name
                     ? "shadow-xl scale-[1.02]"
                     : "hover:shadow-xl hover:scale-[1.01]"
                 }`}
               >
                 {/* Icon Section */}
-                <div
-                  className="rounded-l-[0.5rem] flex items-center justify-center w-20 bg-white translate-x-[0.5rem] transition-all duration-300"
-                  style={{
-                    clipPath: "polygon(0 0, 70% 0, 100% 100%, 0% 100%)",
-                  }}
-                >
-                  <span className=" -translate-x-1.5">{field.icon}</span>
+                <div className="flex items-center justify-center w-16 bg-white px-4">
+                  <span>{field.icon}</span>
                 </div>
 
                 {/* Input Section */}
-                <div
-                  className="rounded-r-[0.5rem] bg-gradient-to-r from-[#eee4e3] via-[#eee4e3] to-[#eee4e3] flex-1 pl-8 -translate-x-[0.5rem] transition-all duration-300"
-                  style={{
-                    clipPath: "polygon(0% 0, 100% 0, 100% 100%,6.3% 100%)",
-                  }}
-                >
+                <div className="flex-1 bg-[#eee4e3]">
                   <input
                     type={field.type}
                     placeholder={field.placeholder}
@@ -209,7 +199,7 @@ const ContactForm = React.memo(() => {
                     onFocus={() => setFocusedField(field.name)}
                     onBlur={() => setFocusedField(null)}
                     disabled={submissionState.isLoading}
-                    className="w-full h-14 bg-transparent text-[#6c5458] placeholder-[#6c5458] placeholder:tracking-widest font-semibold text-sm tracking-wider outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full h-14 bg-transparent text-[#6c5458] placeholder-[#6c5458] placeholder:tracking-widest font-semibold text-sm tracking-wider outline-none disabled:opacity-50 disabled:cursor-not-allowed px-4"
                   />
                 </div>
               </div>

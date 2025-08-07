@@ -6,7 +6,7 @@ const Connectivity = () => {
   return (
     <div id="connectivity">
       {/* Desktop View */}
-      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-16 hidden md:block">
+      <div className="bg-gradient-to-b from-[#E9DEDC] to-white w-full min-h-screen pt-16 hidden md:block">
         {/* Red line above title */}
         <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-7 left-0"></div>
 
@@ -32,13 +32,13 @@ const Connectivity = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-gradient-to-b from-[#FDF6F3] to-white w-full min-h-screen pt-8 md:hidden">
+      <div className="bg-gradient-to-b from-[#E9DEDC] to-white w-full min-h-screen pt-8 md:hidden mt-[-5vh]">
         {/* Red line above title */}
-        <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-5 left-0"></div>
+        <div className="bg-[#BD314C] h-1 w-[18vw] absolute mt-5 left-0"></div>
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center mb-12">
-          <h1 className="text-3xl text-[#725054] font-gentium-plus">
+          <h1 className="text-4xl text-[#725054] font-gentium-plus">
             Connectivity
           </h1>
         </div>

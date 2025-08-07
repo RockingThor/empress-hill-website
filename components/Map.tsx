@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from "react";
 
 // Location constant - you can update this to your desired location
 const LOCATION = {
-  lat: 15.2993, // Goa, India latitude
-  lng: 74.124, // Goa, India longitude
-  address: "Floresta GOA by FLUID SPACE INFRA",
+  lat: 15.392469, // Goa, India latitude
+  lng: 73.847716, // Goa, India longitude
+  address: "Empress Hill, Goa",
 };
 
 const Map = () => {

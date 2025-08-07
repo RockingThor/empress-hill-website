@@ -18,6 +18,7 @@ const sampleImages_mobile = [
 ];
 
 const unitPlan = ["/4bhk/unit_1.png", "/4bhk/unit_2.png"];
+const unitPlan_mobile = ["/4bhk_mobile/unit_1.png", "/4bhk_mobile/unit_2.png"];
 
 const FourBHK = () => {
   return (
@@ -104,27 +105,30 @@ const FourBHK = () => {
           />
         </div>
         <div className="flex flex-col bg-[#725054] w-full h-full items-center justify-center p-5 gap-5 py-12">
-          <h2 className="text-2xl text-[#EFE7E5] font-poppins">OVERVIEW</h2>
-          <p className=" text-[#EFE7E5] font-poppins text-center">
+          <h2 className="text-2xl text-[#EFE7E5] font-poppins text-[16px] font-semibold">
+            OVERVIEW
+          </h2>
+          <p className=" text-[#EFE7E5] text-[12px] font-poppins text-center mt-[-2vh]">
             Our 4 BHK duplexes redefine luxury with expansive layouts spread
             across two levels. These homes bring villa-like privacy with the
             convenience of apartment living; perfect for those who desire more.
           </p>
         </div>
-        <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full flex flex-col items-center mt-5 mb-2">
-          <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
+        <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full flex flex-col items-center mt-10 mb-2">
+          <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit
             <span className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
               Plan
             </span>
           </h1>
-          <div className="w-full h-80 mt-3">
+          <div className="w-full h-50 mt-5 ">
             <ImageSlider
-              images={unitPlan}
+              images={unitPlan_mobile}
               autoPlayInterval={5000}
               showArrows={true}
               showDots={true}
+              paddingNeeded={true}
             />
           </div>
         </div>

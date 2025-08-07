@@ -108,7 +108,7 @@ const Configuration = () => {
           className="absolute right-0 opacity-15 mt-60"
         /> */}
 
-        <div className="bg-[#BD314C] h-1 w-[18vw] absolute mt-16 right-0"></div>
+        <div className="bg-[#BD314C] h-1 w-[14vw] absolute mt-16 right-0"></div>
         <div className="flex flex-col items-center justify-center h-full">
           <h1 className="text-4xl text-[#725054] font-gentium-plus mb-10 mt-10">
             Configuration
@@ -176,7 +176,7 @@ const Configuration = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-5 mt-15">
+        <div className="flex flex-col items-center justify-center gap-5 mt-10 pb-10">
           <button
             onClick={openModal}
             className="bg-[#FFFFFF] text-[#BD314C] px-5 py-3 rounded-md font-bold cursor-pointer shadow-lg hover:bg-gray-100 transition-colors duration-200 z-50"

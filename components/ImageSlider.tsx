@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface ImageSliderProps {
   images: string[];
@@ -9,6 +9,7 @@ interface ImageSliderProps {
   showArrows?: boolean;
   showDots?: boolean;
   className?: string;
+  paddingNeeded?: boolean;
 }
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
@@ -17,6 +18,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   showArrows = true,
   showDots = true,
   className = "",
+  paddingNeeded = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -89,7 +91,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
+              className={`w-full h-full object-cover ${
+                paddingNeeded ? "px-10" : ""
+              }`}
               loading={index === currentIndex ? "eager" : "lazy"}
             />
           </div>
@@ -102,19 +106,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           {/* Left Arrow */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
+            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
             aria-label="Previous image"
           >
-            <ArrowLeft className="w-6 h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
+            <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-transparent  border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
+            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
             aria-label="Next image"
           >
-            <ArrowRight className="w-6 h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
+            <ArrowRight className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
           </button>
         </>
       )}

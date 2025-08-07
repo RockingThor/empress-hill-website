@@ -64,24 +64,24 @@ const Nav = () => {
           ))}
           <button
             onClick={openModal}
-            className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1"
+            className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1 "
           >
             <DownloadIcon className="w-4 h-4" />
             Brochure
           </button>
         </div>
       </nav>
-      <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 md:hidden sticky top-0 z-100">
+      <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 md:hidden sticky top-0 z-100 justify-between">
         <Image
           src="/logos/Layer_1.svg"
           alt="logo"
-          width={250}
-          height={250}
-          className="mx-auto mt-[-15px] cursor-pointer"
+          width={150}
+          height={150}
+          className=" mt-[-10px] ml-[23vw] cursor-pointer"
           onClick={() => scrollToSection("#overview")}
         />
         <Menu
-          className="w-7 h-7 text-[#725054] cursor-pointer"
+          className="w-7 h-7 text-[#725054] cursor-pointer "
           onClick={toggleMenu}
         />
         {isMenuOpen && (

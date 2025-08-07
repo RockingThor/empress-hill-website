@@ -65,10 +65,10 @@ const ThreeBHK = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 md:hidden flex-row gap-5  ">
+      <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full pb-10 md:hidden flex-row gap-5 pt-10  ">
         <div className="flex flex-col items-center justify-center text-center gap-5">
           <div className="flex flex-col items-center justify-center text-center">
-            <div className="bg-[#BD314C] h-1 w-[30vw] absolute mt-0 left-0"></div>
+            <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-[-1vh] left-0"></div>
             <h1 className="text-4xl  text-[#725054] font-gentium-plus">
               3 BHK
             </h1>
@@ -86,16 +86,18 @@ const ThreeBHK = () => {
             showDots={true}
           />
         </div>
-        <div className="flex flex-col bg-[#725054] w-full h-full items-center justify-center p-5 gap-5 py-12">
-          <h2 className="text-2xl text-[#EFE7E5] font-poppins">OVERVIEW</h2>
-          <p className=" text-[#EFE7E5] font-poppins text-center">
+        <div className="flex flex-col bg-[#725054] w-full h-full items-center justify-center p-5 gap-8 py-18">
+          <h2 className="text-[16px] text-[#EFE7E5] font-poppins font-semibold mt-[-1vh]">
+            OVERVIEW
+          </h2>
+          <p className=" text-[#EFE7E5] font-poppins text-center text-[12px] mt-[-3vh] px-10">
             Gracefully designed for modern families, our 3 BHK residences offer
             a harmonious blend of space, natural light, and everyday elegance.
             Ideal for those who seek comfort without compromise.
           </p>
         </div>
-        <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full flex flex-col items-center mt-5 mb-2">
-          <div className="bg-[#BD314C] h-1 w-[28vw] absolute mt-6 right-0"></div>
+        <div className="bg-gradient-to-b from-[#F8F0ED] to-[#FBEFEB] w-full h-full flex flex-col items-center mt-5 mb-2 pt-5">
+          <div className="bg-[#BD314C] h-1 w-[25vw] absolute mt-6 right-0"></div>
           <h1 className="text-4xl  text-[#725054] font-gentium-plus flex flex-row items-center justify-center gap-0.5 ">
             Unit
             <span className="text-4xl  text-[#725054] font-gentium-plus italic ml-2">
@@ -109,7 +111,7 @@ const ThreeBHK = () => {
               width={600}
               height={600}
             />
-            <div className=" text-center justify-between text-sm text-[#725054] font-poppins  mt-2">
+            <div className=" text-center justify-between text-[11px] text-[#725054] font-poppins  mt-2">
               <p>TOP VIEW OF 3BHK FLOOR </p>
             </div>
           </div>

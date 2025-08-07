@@ -1,21 +1,30 @@
 "use client";
+import { Locate } from "lucide-react";
 import React, { useState } from "react";
+import { FaLocationPin } from "react-icons/fa6";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineLocationOn } from "react-icons/md";
 
 interface FaqItem {
   label: string;
-  description: string;
+  description: string[] | string;
 }
 
 const faqItems: FaqItem[] = [
   {
     label: "KEY DESTINATIONS",
-    description: "Explore our key destinations and their unique offerings.",
+    description: [
+      "Vishal Mega Mart",
+      "Reliance Smart Bazar",
+      "Zudio",
+      "Max",
+      "Pantaloons",
+    ],
   },
   {
     label: "ROAD CONNECTIVITY",
-    description: "Learn about the road connectivity options available.",
+    description: ["Vishal Mega Mart", "Reliance Smart Bazar", "Zudio"],
   },
   {
     label: "AIRPORT CONNECTIVITY",
@@ -58,7 +67,7 @@ const Faq: React.FC = () => {
           {/* Animated description */}
           <div
             id={`faq-desc-${idx}`}
-            className={`w-[calc(100%-1.2rem)] translate-x-[0.6rem] rounded-lg ring ring-[#c99ea1] bg-white shadow-lg overflow-hidden transition-all duration-500 ease-in-out
+            className={`w-[calc(100%-1.2rem)] translate-x-[0.6rem] rounded-lg bg-white shadow-lg overflow-hidden transition-all duration-500 ease-in-out
               ${
                 activeFaq === idx
                   ? "max-h-32 lg:max-h-40 py-3 lg:py-4 px-3 lg:px-4 opacity-100"
@@ -69,17 +78,27 @@ const Faq: React.FC = () => {
               transitionProperty: "max-height, opacity, padding",
             }}
           >
-            <p className="text-gray-700 text-xs lg:text-sm font-medium tracking-wide">
-              {item.description}
-            </p>
+            <div className="text-gray-700 text-xs lg:text-sm font-medium tracking-wide flex flex-col gap-1">
+              {Array.isArray(item.description)
+                ? item.description.map((dest, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 text-[#725054]"
+                    >
+                      <IoLocationOutline className="w-4 h-4 text-[#725054]" />
+                      {dest}
+                    </div>
+                  ))
+                : item.description}
+            </div>
           </div>
         </div>
       ))}
 
       {/* Airport distance info */}
-      <div className="w-[calc(100%-1.2rem)] text-[#6b5254] translate-x-[0.6rem] rounded-lg ring ring-[#b0898d] p-3 lg:p-4 bg-white shadow-lg flex items-center justify-start gap-2">
+      <div className="w-[calc(100%-1.2rem)] text-[#6b5254] translate-x-[0.6rem] rounded-lg  p-3 lg:p-4 bg-white shadow-lg flex items-center justify-start gap-2">
         <MdOutlineLocationOn className="w-5 h-5 lg:w-6 lg:h-6 text-[#6b5254] flex-shrink-0" />
-        <span className="tracking-wider font-semibold text-sm lg:text-base">
+        <span className="tracking-wider font-semibold text-sm lg:text-base text-[#725054]">
           Dabolim International Airport - 2.9km
         </span>
       </div>

@@ -12,7 +12,7 @@ const images_mobile = [
 const Hero = () => {
   return (
     <>
-      <div className="w-full h-[100vh] hidden md:flex">
+      <div className="w-full h-[890px] hidden md:flex">
         <ImageSlider
           images={images}
           autoPlayInterval={5000}
@@ -20,7 +20,7 @@ const Hero = () => {
           showDots={false}
         />
       </div>
-      <div className="w-full h-80 flex md:hidden">
+      <div className="w-full h-[330px] flex md:hidden">
         <ImageSlider
           images={images_mobile}
           autoPlayInterval={5000}
