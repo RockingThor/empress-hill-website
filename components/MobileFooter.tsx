@@ -8,12 +8,12 @@ const MobileFooter = () => {
       <button className="flex flex-col items-center justify-center gap-1 w-full cursor-pointer">
         <p>GET DETAILS ON</p>
         <p className="flex flex-row items-center justify-center gap-1">
-          <FaWhatsapp className="" /> WHATSAPP
+          <FaWhatsapp className="h-5 w-5" /> WHATSAPP
         </p>
       </button>
       <div className="w-[2px] h-15 bg-black"></div>
       <button className="flex flex-row items-center justify-center gap-1 w-full cursor-pointer">
-        <PhoneCallIcon className="text-xl" />
+        <PhoneCallIcon className="h-5 w-5" />
         <p>CALL NOW</p>
       </button>
     </div>

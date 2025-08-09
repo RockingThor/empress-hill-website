@@ -6,9 +6,9 @@ const ContactUs = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-6 md:gap-10 py-6 md:h-[50vh]">
       {/* Mobile-only title and subtitle */}
-      <div className="text-white flex flex-col items-center justify-center gap-2 md:hidden">
-        <h1 className="text-3xl font-poppins font-bold">CONTACT US</h1>
-        <p className="text-lsm font-poppins text-center">
+      <div className="text-white flex flex-col items-center justify-center gap-2 md:hidden ">
+        <h1 className="text-[16px] font-semibold font-poppins ">CONTACT US</h1>
+        <p className="font-poppins text-center text-[12px] px-10">
           Please enter the details below to get in touch with us!
         </p>
       </div>

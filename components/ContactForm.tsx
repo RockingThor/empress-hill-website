@@ -140,7 +140,7 @@ const ContactForm = React.memo(() => {
   };
 
   return (
-    <div className="flex items-center justify-center p-2 md:p-4 text-[rgba(0,0,0,1)] mt-[-5vh] md:mt-0">
+    <div className="flex items-center justify-center p-2 md:p-4 text-[rgba(0,0,0,1)] mt-[-5vh] md:mt-0 pb-5">
       <div className="w-full max-w-sm md:max-w-md">
         {/* Header */}
         {/* <div className="text-center mb-8">
@@ -241,7 +241,7 @@ const ContactForm = React.memo(() => {
             <button
               type="submit"
               disabled={submissionState.isLoading}
-              className="group bg-[#8d6d70] text-white font-bold py-4 px-24 hover:bg-[#866568] rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#8d6d70] disabled:transform-none cursor-pointer"
+              className="group bg-[#8d6d70] text-white font-bold py-2 px-10 hover:bg-[#866568] rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#8d6d70] disabled:transform-none cursor-pointer"
             >
               {submissionState.isLoading ? (
                 <>

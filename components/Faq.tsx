@@ -28,7 +28,7 @@ const faqItems: FaqItem[] = [
   },
   {
     label: "AIRPORT CONNECTIVITY",
-    description: "Find out about the airport connectivity services we provide.",
+    description: ["Dabolim International Airport - 2.9km"],
   },
 ];
 
@@ -96,12 +96,12 @@ const Faq: React.FC = () => {
       ))}
 
       {/* Airport distance info */}
-      <div className="w-[calc(100%-1.2rem)] text-[#6b5254] translate-x-[0.6rem] rounded-lg  p-3 lg:p-4 bg-white shadow-lg flex items-center justify-start gap-2">
+      {/* <div className="w-[calc(100%-1.2rem)] text-[#6b5254] translate-x-[0.6rem] rounded-lg  p-3 lg:p-4 bg-white shadow-lg flex items-center justify-start gap-2">
         <MdOutlineLocationOn className="w-5 h-5 lg:w-6 lg:h-6 text-[#6b5254] flex-shrink-0" />
         <span className="tracking-wider font-semibold text-sm lg:text-base text-[#725054]">
           Dabolim International Airport - 2.9km
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };
