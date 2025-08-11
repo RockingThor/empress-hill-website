@@ -133,7 +133,7 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
 
   const downloadBrochure = () => {
     const link = document.createElement("a");
-    link.href = "/brochure.pdf";
+    link.href = "/Empress-Hill-Brochure.pdf";
     link.download = "Empress-Hill-Brochure.pdf";
     document.body.appendChild(link);
     link.click();
