@@ -13,6 +13,12 @@ interface FormData {
   consent: boolean;
 }
 
+interface ValidationErrors {
+  firstName?: string;
+  phone?: string;
+  email?: string;
+}
+
 interface SubmissionState {
   isLoading: boolean;
   error: string | null;
@@ -27,18 +33,102 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
     consent: false,
   });
 
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>(
+    {}
+  );
+
   const [submissionState, setSubmissionState] = useState<SubmissionState>({
     isLoading: false,
     error: null,
     success: false,
   });
 
+  // Validation functions
+  const validateFirstName = (value: string): string | undefined => {
+    if (!value.trim()) return "First name is required";
+    if (value.trim().length < 2)
+      return "First name must be at least 2 characters";
+    if (!/^[a-zA-Z\s]+$/.test(value.trim()))
+      return "First name can only contain letters and spaces";
+    return undefined;
+  };
+
+  const validatePhone = (value: string): string | undefined => {
+    if (!value.trim()) return "Phone number is required";
+    if (!/^\d+$/.test(value)) return "Phone number must contain only digits";
+    if (value.length !== 10) return "Phone number must be exactly 10 digits";
+    return undefined;
+  };
+
+  const validateEmail = (value: string): string | undefined => {
+    if (!value.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) return "Please enter a valid email address";
+    return undefined;
+  };
+
+  const validateForm = (): boolean => {
+    const errors: ValidationErrors = {};
+
+    const firstNameError = validateFirstName(formData.firstName);
+    if (firstNameError) errors.firstName = firstNameError;
+
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) errors.phone = phoneError;
+
+    const emailError = validateEmail(formData.email);
+    if (emailError) errors.email = emailError;
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
+
+    // Clear validation error when user starts typing
+    if (validationErrors[name as keyof ValidationErrors]) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+
+    // Special handling for phone field - only allow digits
+    let processedValue = value;
+    if (name === "phone") {
+      processedValue = value.replace(/\D/g, "").slice(0, 10);
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : processedValue,
     }));
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    let error: string | undefined;
+
+    switch (name) {
+      case "firstName":
+        error = validateFirstName(value);
+        break;
+      case "phone":
+        error = validatePhone(value);
+        break;
+      case "email":
+        error = validateEmail(value);
+        break;
+    }
+
+    if (error) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
   };
 
   const downloadBrochure = () => {
@@ -52,6 +142,11 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate form before submission
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
 
     setSubmissionState({
       isLoading: true,
@@ -102,6 +197,7 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
             email: "",
             consent: false,
           });
+          setValidationErrors({});
           setSubmissionState({
             isLoading: false,
             error: null,
@@ -165,77 +261,104 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* First Name Field */}
-          <div className="flex">
-            <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                />
-              </svg>
+          <div className="space-y-1">
+            <div className="flex">
+              <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
+                <svg
+                  className="w-5 h-5 text-gray-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                placeholder="FIRST NAME"
+                className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none  disabled:opacity-50 disabled:cursor-not-allowed"
+                required
+                disabled={submissionState.isLoading}
+              />
             </div>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              placeholder="FIRST NAME"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
-              required
-              disabled={submissionState.isLoading}
-            />
+            {validationErrors.firstName && (
+              <p className="text-red-500 text-xs ml-12">
+                {validationErrors.firstName}
+              </p>
+            )}
           </div>
 
           {/* Phone Field */}
-          <div className="flex">
-            <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
+          <div className="space-y-1">
+            <div className="flex">
+              <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
+                <svg
+                  className="w-5 h-5 text-gray-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
+              </div>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                placeholder="PHONE"
+                maxLength={10}
+                pattern="[0-9]*"
+                inputMode="numeric"
+                className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none  disabled:opacity-50 disabled:cursor-not-allowed"
+                required
+                disabled={submissionState.isLoading}
+              />
             </div>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="PHONE"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
-              required
-              disabled={submissionState.isLoading}
-            />
+            {validationErrors.phone && (
+              <p className="text-red-500 text-xs ml-12">
+                {validationErrors.phone}
+              </p>
+            )}
           </div>
 
           {/* Email Field */}
-          <div className="flex">
-            <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
+          <div className="space-y-1">
+            <div className="flex">
+              <div className="bg-[#E9DEDC] rounded-l-lg p-3 flex items-center justify-center w-12">
+                <svg
+                  className="w-5 h-5 text-gray-600"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              </div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                placeholder="EMAIL"
+                className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none  disabled:opacity-50 disabled:cursor-not-allowed"
+                required
+                disabled={submissionState.isLoading}
+              />
             </div>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="EMAIL"
-              className="flex-1 bg-[#E9DEDC] rounded-r-lg px-4 py-3 text-gray-800 placeholder-gray-600 font-medium focus:outline-none focus:ring-2 focus:ring-[#BD314C] disabled:opacity-50 disabled:cursor-not-allowed"
-              required
-              disabled={submissionState.isLoading}
-            />
+            {validationErrors.email && (
+              <p className="text-red-500 text-xs ml-12">
+                {validationErrors.email}
+              </p>
+            )}
           </div>
 
           {/* Consent Checkbox */}
@@ -245,7 +368,7 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
               name="consent"
               checked={formData.consent}
               onChange={handleInputChange}
-              className="mt-1 w-4 h-4 text-[#BD314C] bg-[#E9DEDC] border-gray-300 rounded focus:ring-[#BD314C] focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mt-1 w-4 h-4 text-[#BD314C] bg-[#E9DEDC] border-gray-300 rounded  disabled:opacity-50 disabled:cursor-not-allowed"
               required
               disabled={submissionState.isLoading}
             />

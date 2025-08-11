@@ -8,7 +8,7 @@ const ContactUs = () => {
       {/* Mobile-only title and subtitle */}
       <div className="text-white flex flex-col items-center justify-center gap-2 md:hidden ">
         <h1 className="text-[16px] font-semibold font-poppins ">CONTACT US</h1>
-        <p className="font-poppins text-center text-[12px] px-10">
+        <p className="font-poppins text-center text-[12px] px-15">
           Please enter the details below to get in touch with us!
         </p>
       </div>

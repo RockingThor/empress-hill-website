@@ -11,6 +11,12 @@ interface FormData {
   consent: boolean;
 }
 
+interface ValidationErrors {
+  firstName?: string;
+  phone?: string;
+  email?: string;
+}
+
 interface SubmissionState {
   isLoading: boolean;
   error: string | null;
@@ -32,11 +38,55 @@ const ContactForm = React.memo(() => {
     consent: false,
   });
 
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>(
+    {}
+  );
+
   const [submissionState, setSubmissionState] = useState<SubmissionState>({
     isLoading: false,
     error: null,
     success: false,
   });
+
+  // Validation functions
+  const validateFirstName = (value: string): string | undefined => {
+    if (!value.trim()) return "First name is required";
+    if (value.trim().length < 2)
+      return "First name must be at least 2 characters";
+    if (!/^[a-zA-Z\s]+$/.test(value.trim()))
+      return "First name can only contain letters and spaces";
+    return undefined;
+  };
+
+  const validatePhone = (value: string): string | undefined => {
+    if (!value.trim()) return "Phone number is required";
+    if (!/^\d+$/.test(value)) return "Phone number must contain only digits";
+    if (value.length !== 10) return "Phone number must be exactly 10 digits";
+    return undefined;
+  };
+
+  const validateEmail = (value: string): string | undefined => {
+    if (!value.trim()) return "Email is required";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) return "Please enter a valid email address";
+    return undefined;
+  };
+
+  const validateForm = (): boolean => {
+    const errors: ValidationErrors = {};
+
+    const firstNameError = validateFirstName(formData.firstName);
+    if (firstNameError) errors.firstName = firstNameError;
+
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) errors.phone = phoneError;
+
+    const emailError = validateEmail(formData.email);
+    if (emailError) errors.email = emailError;
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const fields: Field[] = useMemo(
     () => [
@@ -48,7 +98,7 @@ const ContactForm = React.memo(() => {
       },
       {
         name: "phone",
-        type: "number",
+        type: "tel",
         placeholder: "PHONE",
         icon: <MdOutlineLocalPhone className="w-6 h-6 text-[#6e5656]" />,
       },
@@ -66,16 +116,58 @@ const ContactForm = React.memo(() => {
 
   const handleInputChange = useCallback(
     (field: keyof FormData, value: string | boolean) => {
+      // Clear validation error when user starts typing
+      if (validationErrors[field as keyof ValidationErrors]) {
+        setValidationErrors((prev) => ({
+          ...prev,
+          [field]: undefined,
+        }));
+      }
+
+      // Special handling for phone field - only allow digits
+      let processedValue = value;
+      if (field === "phone" && typeof value === "string") {
+        processedValue = value.replace(/\D/g, "").slice(0, 10);
+      }
+
       setFormData((prev) => ({
         ...prev,
-        [field]: value,
+        [field]: processedValue,
       }));
     },
-    []
+    [validationErrors]
   );
+
+  const handleBlur = useCallback((field: keyof FormData, value: string) => {
+    let error: string | undefined;
+
+    switch (field) {
+      case "firstName":
+        error = validateFirstName(value);
+        break;
+      case "phone":
+        error = validatePhone(value);
+        break;
+      case "email":
+        error = validateEmail(value);
+        break;
+    }
+
+    if (error) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [field]: error,
+      }));
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Validate form before submission
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
 
     setSubmissionState({
       isLoading: true,
@@ -120,6 +212,7 @@ const ContactForm = React.memo(() => {
           email: "",
           consent: false,
         });
+        setValidationErrors({});
         setSubmissionState({
           isLoading: false,
           error: null,
@@ -174,7 +267,7 @@ const ContactForm = React.memo(() => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           {fields.map((field) => (
-            <div className="relative group" key={field.name}>
+            <div className="relative group space-y-1" key={field.name}>
               <div
                 className={`flex shadow-xl transition-all duration-300 rounded-lg overflow-hidden ${
                   focusedField === field.name
@@ -197,12 +290,21 @@ const ContactForm = React.memo(() => {
                       handleInputChange(field.name, e.target.value)
                     }
                     onFocus={() => setFocusedField(field.name)}
-                    onBlur={() => setFocusedField(null)}
+                    onBlur={(e) => {
+                      setFocusedField(null);
+                      handleBlur(field.name, e.target.value);
+                    }}
                     disabled={submissionState.isLoading}
                     className="w-full h-14 bg-transparent text-[#6c5458] placeholder-[#6c5458] placeholder:tracking-widest font-semibold text-sm tracking-wider outline-none disabled:opacity-50 disabled:cursor-not-allowed px-4"
                   />
                 </div>
               </div>
+              {/* Error Message */}
+              {validationErrors[field.name as keyof ValidationErrors] && (
+                <p className="text-red-500 text-xs ml-16">
+                  {validationErrors[field.name as keyof ValidationErrors]}
+                </p>
+              )}
             </div>
           ))}
 
