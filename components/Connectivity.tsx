@@ -8,7 +8,7 @@ const Connectivity = () => {
       {/* Desktop View */}
       <div className="bg-gradient-to-b from-[#E9DEDC] to-white w-full min-h-screen pt-16 hidden md:block">
         {/* Red line above title */}
-        <div className="bg-[#BD314C] h-1 w-[40vw] absolute mt-7 left-0"></div>
+        <div className="bg-[#BD314C] h-1 w-[37vw] absolute mt-7 left-0"></div>
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center mb-16">
