@@ -15,9 +15,10 @@ export default function PrivacyPolicy() {
 
         <div className="prose prose-lg max-w-none text-gray-700 font-poppins space-y-6">
           <p>
-            Empress Hill ("we", "our", or "us") is committed to protecting your
-            privacy. This Privacy Policy explains how we collect, use, disclose,
-            and safeguard your information when you visit our website{" "}
+            Empress Hill (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is
+            committed to protecting your privacy. This Privacy Policy explains
+            how we collect, use, disclose, and safeguard your information when
+            you visit our website{" "}
             <a
               href="https://www.empresshill.in"
               className="text-[#8E6C70] hover:underline"
