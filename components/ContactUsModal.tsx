@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 interface ContactUsModalProps {
   isOpen: boolean;
@@ -374,7 +375,15 @@ const ContactUsModal: React.FC<ContactUsModalProps> = ({ isOpen, onClose }) => {
             />
             <label className="text-[#E9DEDC] text-[10px]  leading-relaxed">
               By submitting this form you are agreeing to be contacted regarding
-              any special offer or promotion we feel you might be interested in.
+              any special offer or promotion we feel you might be interested in. You agree to our{" "}
+              <Link
+                href="/privacy-policy"
+                className="text-[#BD314C] hover:underline underline"
+                target="_blank"
+              >
+                Privacy Policy
+              </Link>
+              .
             </label>
           </div>
 

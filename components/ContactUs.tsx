@@ -35,16 +35,24 @@ const ContactUs = () => {
 
         {/* Desktop: Vertical layout */}
         <div className="hidden md:flex flex-col items-center justify-center gap-5">
-          <button className="flex flex-col items-center justify-center bg-[#8E6C70] text-white px-10 py-1 rounded-md shadow-xl cursor-pointer">
+          <a
+            href="https://wa.link/0raryc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center bg-[#8E6C70] text-white px-10 py-1 rounded-md shadow-xl cursor-pointer"
+          >
             <p className="text-xl font-poppins">GET DETAILS ON</p>
             <div className="flex flex-row items-center justify-center gap-1">
               <FaWhatsapp className="text-xl font-poppins" />
               WHATSAPP
             </div>
-          </button>
-          <button className="flex flex-row items-center justify-center gap-2 bg-[#8E6C70] text-white px-15 py-4 rounded-md shadow-xl cursor-pointer">
+          </a>
+          <a
+            href="tel:9284911859"
+            className="flex flex-row items-center justify-center gap-2 bg-[#8E6C70] text-white px-15 py-4 rounded-md shadow-xl cursor-pointer"
+          >
             <PhoneCallIcon className="text-xl" /> CALL NOW
-          </button>
+          </a>
         </div>
       </div>
     </div>

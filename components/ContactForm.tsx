@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { LuCircleChevronRight } from "react-icons/lu";
 import { MdOutlineEmail, MdOutlineLocalPhone } from "react-icons/md";
+import Link from "next/link";
 
 interface FormData {
   firstName: string;
@@ -334,7 +335,15 @@ const ContactForm = React.memo(() => {
               className="text-gray-300 leading-relaxed font-sans text-center text-xs"
             >
               By submitting this form you are agreeing to be contacted regarding
-              any special offer or promotion we feel you might be interested in.
+              any special offer or promotion we feel you might be interested in. You agree to our{" "}
+              <Link
+                href="/privacy-policy"
+                className="text-[#d9acb1] hover:underline underline"
+                target="_blank"
+              >
+                Privacy Policy
+              </Link>
+              .
             </label>
           </div>
 
