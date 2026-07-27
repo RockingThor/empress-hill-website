@@ -1,129 +1,128 @@
-"use client";
-import { DownloadIcon, Menu } from "lucide-react";
-import Image from "next/image";
-import React, { useState } from "react";
-import ContactUsModal from "./ContactUsModal";
+'use client';
+import { DownloadIcon, Menu } from 'lucide-react';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import ContactUsModal from './ContactUsModal';
+import { usePathname, useRouter } from 'next/navigation';
 
 const navigationItems = [
-  { name: "Overview", href: "#overview" },
-  { name: "Configuration", href: "#configuration" },
-  { name: "4 BHK Duplexes", href: "#four-bhk-duplexes" },
-  { name: "3 BHK Apartments", href: "#three-bhk-apartments" },
-  { name: "Site Plan", href: "#site-plan" },
-  { name: "Connectivity", href: "#connectivity" },
-  { name: "Contact Us", href: "#contact-us" },
+    { name: 'Overview', href: '#overview', page: '/' },
+    { name: 'Configuration', href: '#configuration', page: '/' },
+    { name: '4 BHK Duplexes', href: '#four-bhk-duplexes', page: '/' },
+    { name: '3 BHK Apartments', href: '#three-bhk-apartments', page: '/' },
+    { name: 'Site Plan', href: '#site-plan', page: '/' },
+    { name: 'Connectivity', href: '#connectivity', page: '/' },
+    { name: 'Contact Us', href: '#contact-us', page: '/' },
 ];
 
 const Nav = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
+    const pathname = usePathname();
 
-  const openModal = () => {
-    setIsModalOpen(true);
-    setIsMenuOpen(false);
-  };
-  const closeModal = () => setIsModalOpen(false);
+    const openModal = () => {
+        setIsModalOpen(true);
+        setIsMenuOpen(false);
+    };
+    const closeModal = () => setIsModalOpen(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-  const scrollToSection = (href: string) => {
-    if (typeof window !== "undefined") {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }
-    setIsMenuOpen(false);
-  };
+    const scrollToSection = (item: { href: string; page: string }) => {
+        if (pathname === item.page) {
+            // Already on the page
+            const element = document.querySelector(item.href);
 
-  return (
-    <>
-      <nav className="hidden md:flex justify-between items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 sticky top-0 z-50">
-        <Image
-          src="/logos/Layer_1.svg"
-          alt="logo"
-          width={300}
-          height={300}
-          className="px-10 cursor-pointer"
-          onClick={() => scrollToSection("#overview")}
-        />
-        <div className="flex items-center gap-4">
-          {navigationItems.map((item, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToSection(item.href)}
-              className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer"
-            >
-              {item.name}
-            </button>
-          ))}
-          <button
-            onClick={openModal}
-            className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1 "
-          >
-            <DownloadIcon className="w-4 h-4" />
-            Brochure
-          </button>
-        </div>
-      </nav>
-      <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 md:hidden sticky top-0 z-100 justify-between">
-        <Image
-          src="/logos/Layer_1.svg"
-          alt="logo"
-          width={150}
-          height={150}
-          className=" mt-[-10px] ml-[23vw] cursor-pointer"
-          onClick={() => scrollToSection("#overview")}
-        />
-        <Menu
-          className="w-7 h-7 text-[#725054] cursor-pointer "
-          onClick={toggleMenu}
-        />
-        {isMenuOpen && (
-          <>
-            {/* Full screen overlay background */}
-            <div
-              className="fixed inset-0 bg-transparent bg-opacity-50 z-40"
-              onClick={() => setIsMenuOpen(false)}
-            />
-            {/* Navigation menu */}
-            <div
-              className={`fixed top-0 right-0 w-[60%] max-w-[300px] h-full bg-[#F7E9E4] transform transition-all duration-300 ease-in-out z-50 ${
-                isMenuOpen
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-full opacity-0"
-              }`}
-            >
-              <div className="flex flex-col items-center h-full gap-3 pt-20 bg-[#F7E9E4] shadow-lg">
-                {navigationItems.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] active:text-[#BD314C] transition-colors duration-200 ease-in-out transform hover:scale-105 w-full py-3 px-4  rounded-md"
-                  >
-                    {item.name}
-                  </button>
-                ))}
-                <button
-                  onClick={openModal}
-                  className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1"
-                >
-                  <DownloadIcon className="w-4 h-4" />
-                  Brochure
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-      </nav>
-      <ContactUsModal isOpen={isModalOpen} onClose={closeModal} />
-    </>
-  );
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }
+        } else {
+            // Navigate to the page with hash
+            router.push(`${item.page}${item.href}`);
+        }
+
+        setIsMenuOpen(false);
+    };
+
+    return (
+        <>
+            <nav className="hidden md:flex justify-between items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 sticky top-0 z-50">
+                <Image
+                    src="/logos/Layer_1.svg"
+                    alt="logo"
+                    width={300}
+                    height={300}
+                    className="px-10 cursor-pointer"
+                    onClick={() =>
+                        scrollToSection({
+                            page: '/',
+                            href: '#overview',
+                        })
+                    }
+                />
+                <div className="flex items-center gap-4">
+                    {navigationItems.map((item, index) => (
+                        <button
+                            key={index}
+                            onClick={() => scrollToSection(item)}
+                            className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer"
+                        >
+                            {item.name}
+                        </button>
+                    ))}
+                    <button
+                        onClick={openModal}
+                        className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1 "
+                    >
+                        <DownloadIcon className="w-4 h-4" />
+                        Brochure
+                    </button>
+                </div>
+            </nav>
+            <nav className="flex items-center bg-gradient-to-b from-[#FFFFFF] from-18% to-[#F7E9E4] to-100% p-4 md:hidden sticky top-0 z-100 justify-between">
+                <Image src="/logos/Layer_1.svg" alt="logo" width={150} height={150} className=" mt-[-10px] ml-[23vw] cursor-pointer" onClick={() => scrollToSection('#overview')} />
+                <Menu className="w-7 h-7 text-[#725054] cursor-pointer " onClick={toggleMenu} />
+                {isMenuOpen && (
+                    <>
+                        {/* Full screen overlay background */}
+                        <div className="fixed inset-0 bg-transparent bg-opacity-50 z-40" onClick={() => setIsMenuOpen(false)} />
+                        {/* Navigation menu */}
+                        <div
+                            className={`fixed top-0 right-0 w-[60%] max-w-[300px] h-full bg-[#F7E9E4] transform transition-all duration-300 ease-in-out z-50 ${
+                                isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+                            }`}
+                        >
+                            <div className="flex flex-col items-center h-full gap-3 pt-20 bg-[#F7E9E4] shadow-lg">
+                                {navigationItems.map((item, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => scrollToSection(item)}
+                                        className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] active:text-[#BD314C] transition-colors duration-200 ease-in-out transform hover:scale-105 w-full py-3 px-4  rounded-md"
+                                    >
+                                        {item.name}
+                                    </button>
+                                ))}
+                                <button
+                                    onClick={openModal}
+                                    className="text-[#725054] font-semibold text-[16px] font-poppins hover:text-[#BD314C] transition-colors duration-200 cursor-pointer flex flex-row items-center justify-center gap-1"
+                                >
+                                    <DownloadIcon className="w-4 h-4" />
+                                    Brochure
+                                </button>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </nav>
+            <ContactUsModal isOpen={isModalOpen} onClose={closeModal} />
+        </>
+    );
 };
 
 export default Nav;
