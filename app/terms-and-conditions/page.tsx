@@ -95,7 +95,7 @@ const TermsAndConditionsPage = () => {
                         heading: 'Contact Us',
                         body: (
                             <>
-                                <p>For any questions related to these Terms & Conditions, please contact us at info@empresshill.in or call us at 9284911859.</p>
+                                <p>For any questions related to these Terms & Conditions, please call us at 9284911859.</p>
                             </>
                         ),
                     },

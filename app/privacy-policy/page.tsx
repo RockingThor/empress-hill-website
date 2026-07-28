@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
                         </ul>
                         <p className="mt-4">To exercise any of these rights, contact us at:</p>
                         <ul className="list-none space-y-1 ml-4">
-                            <li>📧 info@empresshill.in</li>
+                            {/*<li>📧 info@empresshill.in</li>*/}
                             <li>📞 9284911859</li>
                         </ul>
                     </section>
@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
                                     www.empresshill.in
                                 </a>
                             </p>
-                            <p>Email: info@empresshill.in</p>
+                            {/*<p>Email: info@empresshill.in</p>*/}
                             <p>Phone: 9284911859</p>
                         </div>
                     </section>

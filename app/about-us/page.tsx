@@ -60,7 +60,7 @@ const AboutUsPage = () => {
                         heading: 'Contact Us',
                         body: (
                             <>
-                                <p>For consultations, enquiries, or site visits, please reach out to us at info@empresshill.in or call us at 9284911859.</p>
+                                <p>For consultations, enquiries, or site visits, please call us at 9284911859.</p>
                             </>
                         ),
                     },
