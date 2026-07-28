@@ -12,15 +12,15 @@ const ContactUs = () => {
             </div>
 
             {/* Desktop-only title and subtitle */}
-            <div className="text-white flex flex-col items-center justify-center gap-4 hidden md:flex">
+            <div className="text-white hidden md:flex flex-col items-center justify-center gap-4">
                 <h1 className="text-3xl font-poppins font-bold">Contact Us</h1>
                 <div className="flex flex-col border-[0.1px] border-white rounded-md p-2 w-full font-poppins text-sm">
                     <p className="text-center font-semibold">Office Address:</p>
-                    <p className="text-center">Opposite Prabhu Violetta, ALTO - Dabolim, Goa</p>
+                    <p className="text-center">Nagarcem Palolem Street, House No. 135/11-A Shed, Sobit Sarovar Portico, <br/> Palolem Street, Nagarsai, Canacona, South Goa, Goa</p>
                 </div>
                 <div className="flex flex-col border-[0.1px] border-white rounded-md p-2 w-full font-poppins text-sm">
                     <p className="text-center font-semibold">Site Address:</p>
-                    <p className="text-center">Opposite Prabhu Violetta, ALTO - Dabolim, Goa, India-403711</p>
+                    <p className="text-center">Nagarcem Palolem Street, House No. 135/11-A Shed, Sobit Sarovar Portico, <br/> Palolem Street, Nagarsai, Canacona, South Goa, Goa, 403702</p>
                 </div>
             </div>
 
