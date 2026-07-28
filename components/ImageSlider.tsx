@@ -1,130 +1,103 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useState, useEffect, useCallback } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface ImageSliderProps {
-  images: string[];
-  autoPlayInterval?: number;
-  showArrows?: boolean;
-  showDots?: boolean;
-  className?: string;
-  paddingNeeded?: boolean;
+    images: string[];
+    autoPlayInterval?: number;
+    showArrows?: boolean;
+    showDots?: boolean;
+    className?: string;
+    paddingNeeded?: boolean;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({
-  images,
-  autoPlayInterval = 5000,
-  showArrows = true,
-  showDots = true,
-  className = "",
-  paddingNeeded = false,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+const ImageSlider: React.FC<ImageSliderProps> = ({ images, autoPlayInterval = 5000, showArrows = true, showDots = true, className = '', paddingNeeded = false }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-advance functionality
-  useEffect(() => {
-    if (isPaused || images.length <= 1) return;
+    // Auto-advance functionality
+    useEffect(() => {
+        if (isPaused || images.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, autoPlayInterval);
+        const interval = setInterval(() => {
+            setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+        }, autoPlayInterval);
 
-    return () => clearInterval(interval);
-  }, [currentIndex, isPaused, autoPlayInterval, images.length]);
+        return () => clearInterval(interval);
+    }, [currentIndex, isPaused, autoPlayInterval, images.length]);
 
-  // Navigation functions
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  }, [images.length]);
+    // Navigation functions
+    const goToNext = useCallback(() => {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+    }, [images.length]);
 
-  const goToPrevious = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  }, [images.length]);
+    const goToPrevious = useCallback(() => {
+        setCurrentIndex(prevIndex => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    }, [images.length]);
 
-  const goToSlide = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+    const goToSlide = useCallback((index: number) => {
+        setCurrentIndex(index);
+    }, []);
 
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        goToPrevious();
-      } else if (event.key === "ArrowRight") {
-        goToNext();
-      }
-    };
+    // Handle keyboard navigation
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'ArrowLeft') {
+                goToPrevious();
+            } else if (event.key === 'ArrowRight') {
+                goToNext();
+            }
+        };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goToNext, goToPrevious]);
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [goToNext, goToPrevious]);
 
-  if (!images || images.length === 0) {
+    if (!images || images.length === 0) {
+        return (
+            <div className={`w-full h-64 bg-gray-200 flex items-center justify-center ${className}`}>
+                <p className="text-gray-500">No images available</p>
+            </div>
+        );
+    }
+
     return (
-      <div
-        className={`w-full h-64 bg-gray-200 flex items-center justify-center ${className}`}
-      >
-        <p className="text-gray-500">No images available</p>
-      </div>
-    );
-  }
+        <div className={`relative w-full h-full overflow-hidden ${className}`} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            {/* Image Container */}
+            <div className="relative w-full h-full">
+                {images.map((image, index) => (
+                    <div key={index} className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}>
+                        <img src={image} alt={`Slide ${index + 1}`} className={`w-full h-full object-cover ${paddingNeeded ? 'px-10' : ''}`} loading={index === currentIndex ? 'eager' : 'lazy'} />
+                    </div>
+                ))}
+            </div>
 
-  return (
-    <div
-      className={`relative w-full h-full overflow-hidden ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Image Container */}
-      <div className="relative w-full h-full">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className={`w-full h-full object-cover ${
-                paddingNeeded ? "px-10" : ""
-              }`}
-              loading={index === currentIndex ? "eager" : "lazy"}
-            />
-          </div>
-        ))}
-      </div>
+            {/* Navigation Arrows */}
+            {showArrows && images.length > 1 && (
+                <>
+                    {/* Left Arrow */}
+                    <button
+                        onClick={goToPrevious}
+                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
+                        aria-label="Previous image"
+                    >
+                        <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
+                    </button>
 
-      {/* Navigation Arrows */}
-      {showArrows && images.length > 1 && (
-        <>
-          {/* Left Arrow */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
-            aria-label="Previous image"
-          >
-            <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
-          </button>
+                    {/* Right Arrow */}
+                    <button
+                        onClick={goToNext}
+                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
+                        aria-label="Next image"
+                    >
+                        <ArrowRight className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
+                    </button>
+                </>
+            )}
 
-          {/* Right Arrow */}
-          <button
-            onClick={goToNext}
-            className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 md:w-12 md:h-12 bg-transparent border-2 border-white hover:bg-black/50 rounded-full flex items-center justify-center transition-all duration-300 group cursor-pointer"
-            aria-label="Next image"
-          >
-            <ArrowRight className="w-4 h-4 md:w-6 md:h-6 text-[#725054] hover:text-white group-hover:scale-110 transition-transform duration-200" />
-          </button>
-        </>
-      )}
-
-      {/* Dots Indicator */}
-      {/* {showDots && images.length > 1 && (
+            {/* Dots Indicator */}
+            {/* {showDots && images.length > 1 && (
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex space-x-2">
           {images.map((_, index) => (
             <button
@@ -141,15 +114,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         </div>
       )} */}
 
-      {/* Slide Counter */}
-      {/* {images.length > 1 && (
+            {/* Slide Counter */}
+            {/* {images.length > 1 && (
         <div className="absolute top-4 right-4 z-10 bg-black/30 text-white px-3 py-1 rounded-full text-sm">
           {currentIndex + 1} / {images.length}
         </div>
       )} */}
 
-      {/* Pause/Play Indicator */}
-      {/* {images.length > 1 && (
+            {/* Pause/Play Indicator */}
+            {/* {images.length > 1 && (
         <div className="absolute top-4 left-4 z-10">
           <div
             className={`w-3 h-3 rounded-full ${
@@ -158,8 +131,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           />
         </div>
       )} */}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default ImageSlider;

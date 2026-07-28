@@ -1,14 +1,14 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* Add scroll margin for sections with IDs to account for sticky navigation */
 [id] {
-  scroll-margin-top: 100px;
+    scroll-margin-top: 100px;
 }
 
 .font-gentium-plus {
-  font-family: var(--font-gentium-plus);
+    font-family: var(--font-gentium-plus);
 }

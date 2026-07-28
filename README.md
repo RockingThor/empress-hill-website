@@ -29,9 +29,9 @@ To use the Map component, you need to set up a Google Maps API key:
 3. Enable the Maps JavaScript API
 4. Create credentials (API key)
 5. Create a `.env.local` file in the root directory and add:
-   ```
-   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
-   ```
+    ```
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+    ```
 
 ## Learn More
 
