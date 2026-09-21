@@ -20,7 +20,7 @@ const ContactUs = () => {
                 </div>
                 <div className="flex flex-col border-[0.1px] border-white rounded-md p-2 w-full font-poppins text-sm">
                     <p className="text-center font-semibold">Site Address:</p>
-                    <p className="text-center">Nagarcem Palolem Street, House No. 135/11-A Shed, Sobit Sarovar Portico, <br/> Palolem Street, Nagarsai, Canacona, South Goa, Goa, 403702</p>
+                    <p className="text-center">Opposite Prabhu Violetta, ALTO - Dabolim, Goa, India-403711</p>
                 </div>
             </div>
 

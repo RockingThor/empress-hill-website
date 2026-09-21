@@ -2,8 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 
 export const businessInfo = {
-    companyName: 'Empress Hill by SUNNYVALE RESORT HOLDINGS LLP',
-    address: `Nagarcem Palolem Street, House No. 135/11-A Shed, Sobit Sarovar Portico, <br/> Palolem Street, Nagarsai, Canacona, South Goa, Goa, 403702`,
+    companyName: 'Empress Hill',
+    address: 'Opposite Prabhu Violetta, ALTO - Dabolim, Goa, India-403711',
     contactNumber: '+91 9284911859',
     email: 'info@empresshill.in',
 };
@@ -19,7 +19,6 @@ interface CompanyFooterSectionProps {
 }
 
 const currentYear = new Date().getFullYear();
-const addressLines = businessInfo.address.split(/<br\s*\/?>/);
 
 const CompanyFooterSection: React.FC<CompanyFooterSectionProps> = ({ compact = false }) => {
     return (
@@ -27,15 +26,7 @@ const CompanyFooterSection: React.FC<CompanyFooterSectionProps> = ({ compact = f
             <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div className="space-y-1 text-sm text-[#5f4448]">
                     <p className="text-base font-semibold text-[#725054]">{businessInfo.companyName}</p>
-
-                    <p>
-                        {addressLines.map((line, index) => (
-                            <React.Fragment key={index}>
-                                {line}
-                                {index < addressLines.length - 1 && <br />}
-                            </React.Fragment>
-                        ))}
-                    </p>
+                    <p>{businessInfo.address}</p>
                     <p>{businessInfo.contactNumber}</p>
                     {/* <p>{businessInfo.email}</p> */}
                 </div>
